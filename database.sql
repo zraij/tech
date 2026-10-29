@@ -198,8 +198,10 @@ begin
   select c.id into v_id
     from public.customers c
     where c.assigned_to is null
-      and (c.status = 'pending' or (c.status = 'follow_up' and (c.callback_at is null or c.callback_at <= now())))
-    order by c.priority asc, c.created_at asc, c.id asc
+      and c.status in ('pending','follow_up')
+      and (c.callback_at is null or c.callback_at <= now())
+    order by case when coalesce(c.phone, '') ~ '07[78][0-9]{8,10}' then 0 else 1 end,
+             c.priority asc, c.created_at asc, c.id asc
     limit 1
     for update skip locked;
 

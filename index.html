@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="styles.css">
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="https://cdn.sheetjs.com/xlsx-0.20.3/package/dist/xlsx.full.min.js"></script>
-  <script defer src="app.js"></script>
+  <script defer src="app.js?v=20261029-phone-priority"></script>
 </head>
 <body>
 <header class="topbar"><div class="brand"><div class="brand-mark">و</div><div><strong>متابعة الوايرليس</strong><span>شركة تكنولوجي للإنترنت</span></div></div><div id="accountBar" class="account-bar hidden"><span class="connection"><i></i><b id="connectionText">قاعدة مشتركة</b></span><span id="employeeBadge"></span><button class="button button-ghost" id="settingsBtn">الإعدادات</button><button class="button button-ghost" id="signOutBtn">خروج</button></div></header>
@@ -25,7 +25,7 @@
     <section id="customerForm" class="form-layout hidden">
       <div class="form-main">
         <section class="panel customer-card">
-          <div class="form-top"><div><span class="priority-badge" id="priorityBadge">أولوية</span><span class="queue-position" id="queuePosition"></span></div><span class="queue-label">نموذج الاتصال الحالي</span></div>
+          <div class="form-top"><div><span class="priority-badge" id="priorityBadge">أولوية</span><span class="queue-position" id="queuePosition"></span></div><div class="form-top-actions"><span class="queue-label">نموذج الاتصال الحالي</span><button id="skipNextTopBtn" class="button button-small button-outline">التالي بدون اتصال ←</button></div></div>
           <div class="customer-title"><div><p class="eyebrow">المشترك</p><h2 id="customerName">—</h2><div id="customerPhone" class="phone-list">—</div></div><a id="callButton" class="button button-primary call-button">اتصال</a></div>
           <div class="customer-facts"><div><span>اليوزر</span><b id="customerUsername">غير مسجل</b></div><div><span>المنطقة والعنوان</span><b id="customerArea">—</b></div><div><span>الباقة الحالية</span><b id="customerPlan">—</b></div><div><span>سعر التجديد</span><b id="customerPrice">افحص بالبرنامج</b></div></div>
           <div class="reason-box"><span>سبب الانقطاع المسجل</span><p id="customerReason">—</p></div>
