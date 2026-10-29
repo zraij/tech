@@ -183,6 +183,13 @@ begin
       and claimed_at < now() - interval '30 minutes'
       and status in ('pending','follow_up');
 
+  -- حرر الحجوزات القديمة بلا رقم حتى ما تتقدم على أصحاب الأرقام.
+  update public.customers
+    set assigned_to = null, claimed_at = null
+    where assigned_to = v_uid
+      and status in ('pending','follow_up')
+      and coalesce(phone, '') !~ '07[78][0-9]{8,10}';
+
   select c.id into v_id
     from public.customers c
     where c.assigned_to = v_uid
