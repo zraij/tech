@@ -1,0 +1,7 @@
+# Subscriber files and local secrets must not go to GitHub
+*.xlsx
+*.xls
+*.csv
+.env
+.env.*
+config.local.js
