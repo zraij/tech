@@ -188,7 +188,7 @@ begin
     set assigned_to = null, claimed_at = null
     where assigned_to = v_uid
       and status in ('pending','follow_up')
-      and coalesce(phone, '') !~ '07[78][0-9]{8,10}';
+      and coalesce(phone, '') !~ '07[78][0-9]{8}';
 
   select c.id into v_id
     from public.customers c
@@ -207,7 +207,7 @@ begin
     where c.assigned_to is null
       and c.status in ('pending','follow_up')
       and (c.callback_at is null or c.callback_at <= now())
-    order by case when coalesce(c.phone, '') ~ '07[78][0-9]{8,10}' then 0 else 1 end,
+    order by case when coalesce(c.phone, '') ~ '07[78][0-9]{8}' then 0 else 1 end,
              c.priority asc, c.created_at asc, c.id asc
     limit 1
     for update skip locked;

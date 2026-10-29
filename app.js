@@ -12,7 +12,7 @@
   const esc=v=>String(v??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
   const norm=v=>String(v??"").toLowerCase().replace(/[\u064b-\u065f\u0670\u0640]/g,"").replace(/[أإآ]/g,"ا").replace(/ى/g,"ي").replace(/ة/g,"ه").replace(/[\s_\-]+/g," ").trim();
   const asciiDigits=v=>String(v??"").replace(/[٠-٩۰-۹]/g,d=>String("٠١٢٣٤٥٦٧٨٩۰۱۲۳۴۵۶۷۸۹".indexOf(d)%10));
-  function extractPhones(...values){const found=[];const rx=/(^|[^\d])(07[78](?:[\s().-]*\d){8,10})(?=$|[^\d])/g;for(const value of values){const text=asciiDigits(value);for(const match of text.matchAll(rx)){const phone=match[2].replace(/\D/g,"");if(!found.includes(phone))found.push(phone);}}return found;}
+  function extractPhones(...values){const found=[];const rx=/(^|[^\d])(07[78](?:[\s().-]*\d){8})(?=$|[^\d])/g;for(const value of values){const text=asciiDigits(value);for(const match of text.matchAll(rx)){const phone=match[2].replace(/\D/g,"");if(phone.length===11&&!found.includes(phone))found.push(phone);}}return found;}
   const note=(id,msg,type="")=>{const e=$("#"+id);e.textContent=msg;e.className="message "+type;};
   const toast=msg=>{const e=$("#toast");e.textContent=msg;e.classList.add("show");clearTimeout(toast.t);toast.t=setTimeout(()=>e.classList.remove("show"),2600);};
   const inCoverage=area=>COVERAGE.some(z=>norm(area).includes(norm(z)));
