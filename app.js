@@ -4,7 +4,7 @@
   const QUEUE_STATUSES=["pending","follow_up"];
   const STATUS_AR={pending:"بانتظار الاتصال",no_answer:"ما رد",follow_up:"موعد متابعة",ticket_open:"تكت مفتوح",returned:"عاد للخدمة",not_interested:"غير مهتم",do_not_contact:"عدم تواصل",invalid_data:"بيانات ناقصة"};
   const OUTCOME_STATUS={no_answer:"no_answer",follow_up:"follow_up",ticket_open:"ticket_open",returned:"returned",not_interested:"not_interested",do_not_contact:"do_not_contact",invalid_data:"invalid_data"};
-  const ALIASES={name:["الاسم","اسم المشترك","اسم الزبون","اسم العميل","المشترك","customer name","name"],phone:["الهاتف","رقم الهاتف","رقم الموبايل","الموبايل","phone","mobile"],username:["اليوزر","يوزر","اسم اليوزر","اسم المستخدم","username","user","user name","login"]};
+  const ALIASES={name:["الاسم","اسم المشترك","اسم الزبون","اسم العميل","المشترك","customer name","name","firstname","first name"],phone:["الهاتف","رقم الهاتف","رقم الموبايل","الموبايل","phone","mobile"],username:["اليوزر","يوزر","اسم اليوزر","اسم المستخدم","username","user","user name","login"]};
   const LABEL={name:"اسم المشترك",phone:"رقم الهاتف",username:"اليوزر"};
   const DEFAULT_TEMPLATE="السلام عليكم {اسم_المشترك}، وياك {اسم_الموظف} من {اسم_الشركة}. أتصل بخصوص اشتراك الوايرليس السابق. حبّينا نعرف شنو السبب اللي خلاك توقف؟\n\nعدنا كول سنتر وصيانة يومياً من {ساعات_العمل}. مناطق التغطية تشمل شمال العلم وجنوب العلم وشرق العلم، وأتأكد من عنوانك بالتحديد قبل ما أأكد توفر الخدمة.\n\nعرض الرجعة: أول شهر بـ{سعر_العرض} دينار. التجديد يكون بسعر باقتك الحالية. تحب نتحقق من التغطية ونكمل طلب الرجعة؟\n\nللتواصل: {رقم_الكول_سنتر}.";
   const config=()=>{try{return JSON.parse(localStorage.getItem("wireless_sb_config")||"null")}catch{return null}};
