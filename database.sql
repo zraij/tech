@@ -26,6 +26,7 @@ create table if not exists public.customers (
   subscriber_ref text,
   name text not null default '',
   phone text not null default '',
+  tower_name text not null default '',
   area text not null default '',
   address text not null default '',
   plan_name text not null default '',
@@ -44,6 +45,9 @@ create table if not exists public.customers (
   created_at timestamptz not null default now(),
   updated_at timestamptz not null default now()
 );
+
+-- يضيف الحقل للمشاريع التي شُغّل عليها إصدار سابق من قاعدة البيانات.
+alter table public.customers add column if not exists tower_name text not null default '';
 
 create table if not exists public.call_attempts (
   id bigint generated always as identity primary key,
